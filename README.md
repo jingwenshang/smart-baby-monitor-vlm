@@ -44,7 +44,7 @@ AI-powered baby monitoring can provide an extra layer of safety and peace of min
 | Week 6 | Add natural language output |
 | Week 7 | (Optional) Add alert feature |
 | Week 8 | Finalize and test demo |
-| Week 9 | Prepare report and presentation |
+| Week 9 | Prepare report |
 
 ## References
 - Hugging Face VLM models: https://huggingface.co/docs/transformers/main/en/model_doc/llava
