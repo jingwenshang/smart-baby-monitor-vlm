@@ -14,8 +14,10 @@ app.config["OUTPUT_DIR"] = os.getenv("OUTPUT_DIR", "static/generated_images")
 os.makedirs(app.config["OUTPUT_DIR"], exist_ok=True)
 
 
+
 app.register_blueprint(generate_bp, url_prefix="/generate")
 app.register_blueprint(auth_bp)
+
 
 
 @app.route("/", defaults={"path": ""})
