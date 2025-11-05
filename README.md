@@ -129,4 +129,4 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## 👤 Author
 
-Jingwen Shang — Smart Baby Monitor @ ECE 635 Course Pro
+Jingwen Shang
