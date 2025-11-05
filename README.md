@@ -89,7 +89,10 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 <img width="2560" height="1073" alt="image" src="https://github.com/user-attachments/assets/da1b6107-cc24-4dd6-8708-a838ce3c85d6" />
 <img width="2560" height="1223" alt="f5b7d13c889f07a94d2ce9f2d5c26fa3" src="https://github.com/user-attachments/assets/d2c29adf-8c51-4eaa-a40e-fda2ae1f8e4d" />
-![f12dde76dbc0012eb66125166d9ac986](https://github.com/user-attachments/assets/9938ba84-73ce-4895-a7b9-c64299eee1ac)
+<img width="2083" height="1350" alt="image" src="https://github.com/user-attachments/assets/ce0cb8a6-9a66-4fa9-a3cd-8b1f44329a44" />
+
+
+
 
 
 
