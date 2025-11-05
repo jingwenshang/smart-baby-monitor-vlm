@@ -32,17 +32,28 @@ A full-stack AI-powered baby monitoring application that uses Visual Language Mo
 ## 📁 Project Structure
 
 ```
-smart-baby-monitor/
-├── frontend/              # React frontend (Vite)
-│   └── src/
-│       └── components/    # UploadForm, LoginForm, RegisterForm
-├── backend/               # Flask backend
-│   ├── routes/            # generate_bp (image handling), auth_bp (optional)
-│   └── model_utils.py     # VLM inference logic
-├── static/                # Generated images (auto-saved)
-├── Dockerfile             # Full-stack container
-├── app.py                 # Flask entry point
-└── README.md              # You are here
+VLMmonitor/
+├── backend/
+│ ├── routes/ # Flask Blueprints: generate_bp, auth_bp
+│ ├── static/ # Output images
+│ ├── app.py # Flask entry
+│ ├── model_utils.py # BLIP model logic
+│ └── requirements.txt
+├── frontend/
+│ ├── public/
+│ ├── src/
+│ │ ├── assets/ # (optional)
+│ │ ├── components/ # UploadForm, LoginForm, RegisterForm
+│ │ └── context/ # AuthContext
+│ ├── App.jsx / App.css
+│ ├── main.jsx
+│ └── index.css / index.html
+├── .env
+├── Dockerfile # Full-stack container
+├── docker-compose.yml # Optional multi-service deploy
+├── docker_test_log.md # Deployment log
+├── README.md # You're here
+└── .gitignore
 ```
 
 ---
