@@ -98,9 +98,12 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## 📸 Screenshots
 
-<img width="2560" height="1073" alt="image" src="https://github.com/user-attachments/assets/da1b6107-cc24-4dd6-8708-a838ce3c85d6" />
-<img width="2560" height="1223" alt="f5b7d13c889f07a94d2ce9f2d5c26fa3" src="https://github.com/user-attachments/assets/d2c29adf-8c51-4eaa-a40e-fda2ae1f8e4d" />
-<img width="2083" height="1350" alt="image" src="https://github.com/user-attachments/assets/ce0cb8a6-9a66-4fa9-a3cd-8b1f44329a44" />
+<img width="2560" height="943" alt="image" src="https://github.com/user-attachments/assets/4cf14e26-5eaf-47a5-bf68-9494d3548668" />
+<img width="2560" height="1193" alt="image" src="https://github.com/user-attachments/assets/0e40b583-8942-4b8b-97a1-9c7b5300928c" />
+<img width="2560" height="1169" alt="image" src="https://github.com/user-attachments/assets/9edddb10-38f9-4cb9-afdb-2245afaa472a" />
+<img width="2558" height="1269" alt="image" src="https://github.com/user-attachments/assets/e1c19d01-0279-42ce-963a-488cc48ab490" />
+<img width="2560" height="381" alt="image" src="https://github.com/user-attachments/assets/5bd8b928-ef39-46b7-9cd5-cfce73a768ec" />
+
 
 
 
