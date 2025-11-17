@@ -74,7 +74,7 @@ npm run dev
 >
 > This will launch the React frontend with image analysis handled by the Hugging Face `blip-image-captioning-base` model.
 
----
+
 
 ### 2. 🧠 Local Flask Backend (Optional: Instead of Hugging Face)
 
@@ -89,7 +89,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
----
 
 ### 3. 🐳 Docker Fullstack Build & Run
 
