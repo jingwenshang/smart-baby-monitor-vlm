@@ -1,8 +1,6 @@
-import React, { useState, useRef, useContext } from "react";
-import { AuthContext } from "../context/AuthContext.jsx";
+import React, { useState, useRef } from "react";
 
-const UploadForm = ({ triggerLogin }) => {
-  const { token } = useContext(AuthContext);
+const UploadForm = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [result, setResult] = useState(null);
@@ -19,30 +17,31 @@ const UploadForm = ({ triggerLogin }) => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-
-    if (!token) {
-      triggerLogin(); // open login modal
-      return;
-    }
-
     if (!image) return;
-
-    const formData = new FormData();
-    formData.append("image", image);
 
     setLoading(true);
     try {
-      const res = await fetch("/generate/", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
+      const response = await fetch(
+        "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
+          },
+          body: image,
+        }
+      );
+
+      const data = await response.json();
+      const text = data?.[0]?.generated_text || "No description.";
+
+      setResult({
+        description: text,
+        alert: text.toLowerCase().includes("crying"),
       });
-      const data = await res.json();
-      setResult(data);
     } catch (err) {
       console.error("Upload failed:", err);
+      setResult({ description: "Error from Hugging Face", alert: false });
     } finally {
       setLoading(false);
     }
