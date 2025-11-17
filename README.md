@@ -1,6 +1,8 @@
 # Smart Baby Monitor using Visual Language Models (VLM)
 
 A full-stack AI-powered baby monitoring application that uses Visual Language Models (VLMs) to detect and describe baby activities such as crying, sleeping, and playing from images. Designed with a React frontend and a Flask backend, the app provides natural language summaries and optional alerts based on baby behavior.
+Hosted on Vercel:
+🔗 https://smart-baby-monitor-vlm.vercel.app
 
 ---
 
