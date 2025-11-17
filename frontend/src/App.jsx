@@ -1,6 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-const UploadForm = () => {
+const UploadForm = ({ triggerLogin }) => {
+  const { token } = useContext(AuthContext);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [result, setResult] = useState(null);
@@ -17,6 +19,12 @@ const UploadForm = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
+
+    if (!token) {
+      triggerLogin();
+      return;
+    }
+
     if (!image) return;
 
     setLoading(true);
