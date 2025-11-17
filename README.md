@@ -118,8 +118,9 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 * **Option 1**: All-in-one Docker to [Render.com](https://render.com)
 * **Option 2**: Vercel (frontend) + Render (backend API)
+💻 Frontend: Deployed on Vercel
 
-> Deployment-ready. Contact points configurable in `.env` or fetch headers.
+🧠 Backend/Model: Not deployed due to compute/memory limits on free Render plan. Model requires ~512Mi+ RAM for inference with blip-image-captioning-base.
 
 ---
 
