@@ -80,7 +80,7 @@ npm run dev
 > - **Uncomment** the `/generate/` logic (already included & marked clearly)
 > - Then run the backend as below.
 
----
+
 
 ### 2. 🧠 Local Flask Backend (Optional: Instead of Hugging Face)
 
@@ -95,7 +95,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
----
 
 ### 3. 🐳 Docker Fullstack Build & Run
 
