@@ -1,126 +1,72 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
+import UploadForm from "./components/UploadForm";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 import { AuthContext } from "./context/AuthContext";
 
-const UploadForm = ({ triggerLogin }) => {
-  const { token } = useContext(AuthContext);
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const fileInputRef = useRef(null);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-    setPreview(URL.createObjectURL(file));
-    setResult(null);
-  };
-
-  const handleUpload = async (e) => {
-    e.preventDefault();
-
-    if (!token) {
-      triggerLogin(); // preserve login modal logic
-      return;
-    }
-
-    if (!image) return;
-
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
-          },
-          body: image,
-        }
-      );
-
-      const data = await response.json();
-      const text = data?.[0]?.generated_text || "No description.";
-
-      setResult({
-        description: text,
-        alert: text.toLowerCase().includes("crying"),
-      });
-    } catch (err) {
-      console.error("Upload failed:", err);
-      setResult({ description: "Error from Hugging Face", alert: false });
-    } finally {
-      setLoading(false);
-    }
-  };
+function App() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const { username, logout } = useContext(AuthContext);
 
   return (
-    <div className="w-full max-w-xl bg-white p-8 rounded-xl shadow-lg space-y-6">
-      <form onSubmit={handleUpload} className="flex flex-col gap-4">
-        <label className="text-lg font-medium text-gray-700">
-          Upload a baby image:
-        </label>
-
-        <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6 relative">
+      {/* Login / Logout */}
+      <div className="absolute top-6 right-6">
+        {username ? (
+          <div className="flex items-center gap-4">
+            <span className="text-gray-800 text-sm">👤 {username}</span>
+            <button
+              onClick={logout}
+              className="text-sm border border-red-500 text-red-500 px-3 py-1 rounded hover:bg-red-100 transition"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
           <button
-            type="button"
-            onClick={() => fileInputRef.current.click()}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+            onClick={() => setShowLogin(true)}
+            className="text-sm border border-blue-500 text-blue-500 px-3 py-1 rounded hover:bg-blue-100 transition"
           >
-            Upload Image
+            Login
           </button>
-
-          <span className="text-gray-600 text-sm">
-            {image ? image.name : "No file selected"}
-          </span>
-        </div>
-
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          ref={fileInputRef}
-          className="hidden"
-        />
-
-        {preview && (
-          <img
-            src={preview}
-            alt="Preview"
-            className="w-full h-auto rounded-lg border mt-2"
-          />
         )}
+      </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
-          disabled={!image || loading}
-        >
-          {loading ? "Analyzing..." : "Analyze Baby Activity"}
-        </button>
-      </form>
+      {/* Centered Title */}
+      <h1 className="text-4xl font-extrabold text-blue-600 text-center mb-6">
+        🍼 Smart Baby Monitor
+      </h1>
 
-      {result && (
-        <div
-          className={`p-4 rounded-md ${
-            result.alert
-              ? "bg-red-100 border border-red-400 text-red-700"
-              : "bg-green-100 border border-green-400 text-green-700"
-          }`}
-        >
-          <p className="text-lg font-semibold mb-2">
-            📝 Description: {result.description}
-          </p>
-          {result.alert ? (
-            <p className="font-bold text-lg">⚠️ ALERT: Baby might be crying!</p>
-          ) : (
-            <p className="font-bold text-lg">✅ Baby looks fine. No alert.</p>
-          )}
+      {/* Modals */}
+      {showLogin && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-10">
+          <LoginForm
+            onClose={() => setShowLogin(false)}
+            switchToRegister={() => {
+              setShowLogin(false);
+              setShowRegister(true);
+            }}
+          />
         </div>
       )}
+
+      {showRegister && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-10">
+          <RegisterForm
+            onClose={() => setShowRegister(false)}
+            switchToLogin={() => {
+              setShowRegister(false);
+              setShowLogin(true);
+            }}
+          />
+        </div>
+      )}
+
+      {/* Upload Section */}
+      <UploadForm triggerLogin={() => setShowLogin(true)} />
     </div>
   );
-};
+}
 
-export default UploadForm;
+export default App;
