@@ -56,48 +56,45 @@ VLMmonitor/
 └── .gitignore
 ```
 
----
+## 🔪 Usage
 
-## 🧪 Usage
-
-### 1. 🔧 Local Development
+### 1. 💻 Frontend Development (with Hugging Face API - Default)
 
 ```bash
-# Frontend
 cd frontend
 npm install
 npm run dev
+```
 
-# Backend (in another terminal)
+> ⚠️ Make sure you’ve added your Hugging Face API token to a `.env` file:
+>
+> ```
+> VITE_HF_TOKEN=hf_...
+> ```
+>
+> This will launch the React frontend with image analysis handled by the Hugging Face `blip-image-captioning-base` model.
+
+---
+
+### 2. 🧠 Local Flask Backend (Optional: Instead of Hugging Face)
+
+If you prefer using your own Flask backend at `/generate/` (e.g., to run offline or for full control), you can:
+
+1. **Uncomment** the `/generate/` logic in `UploadForm.jsx` (clearly marked in the file).
+2. Start the backend manually:
+
+```bash
 cd backend
 pip install -r requirements.txt
 python app.py
-
-
-⚠ Make sure you’ve added your Hugging Face API token to a .env file:
-
-VITE_HF_TOKEN=hf_...
-
-
-This will launch the React frontend with image analysis handled by the Hugging Face blip-image-captioning-base model.
-
 ```
 
-### 2. 🧠 Local Flask Backend (instead of Hugging Face)
-
-If you prefer using your own Flask backend at /generate/ (e.g., to run offline or for full control), you can:
-
-Uncomment the /generate/ logic in UploadForm.jsx (clearly marked).
-
-Start the backend manually:
-
-cd backend
-pip install -r requirements.txt
-python app.py
-
-```
+---
 
 ### 3. 🐳 Docker Fullstack Build & Run
+
+> This runs both frontend + backend inside one container. It does **not** use Hugging Face.
+> Make sure you're using the `/generate/` version of `UploadForm.jsx`.
 
 ```bash
 docker build -t baby-monitor .
