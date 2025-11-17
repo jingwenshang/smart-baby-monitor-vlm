@@ -21,39 +21,28 @@ const UploadForm = ({ triggerLogin }) => {
     e.preventDefault();
 
     if (!token) {
-      triggerLogin();
+      triggerLogin(); // open login modal
       return;
     }
 
     if (!image) return;
 
+    const formData = new FormData();
+    formData.append("image", image);
+
     setLoading(true);
     try {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
-            "Content-Type": image.type,
-          },
-          body: image,
-        }
-      );
-
-      const data = await response.json();
-      const text = data?.[0]?.generated_text || "No description.";
-
-      setResult({
-        description: text,
-        alert: text.toLowerCase().includes("crying"),
+      const res = await fetch("/generate/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
       });
+      const data = await res.json();
+      setResult(data);
     } catch (err) {
       console.error("Upload failed:", err);
-      setResult({
-        description: "Error from Hugging Face",
-        alert: false,
-      });
     } finally {
       setLoading(false);
     }
