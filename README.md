@@ -1,8 +1,7 @@
 # Smart Baby Monitor using Visual Language Models (VLM)
 
 A full-stack AI-powered baby monitoring application that uses Visual Language Models (VLMs) to detect and describe baby activities such as crying, sleeping, and playing from images. Designed with a React frontend and a Flask backend, the app provides natural language summaries and optional alerts based on baby behavior.
-Hosted on Vercel:
-🔗 https://smart-baby-monitor-vlm.vercel.app
+
 
 ---
 
@@ -76,7 +75,12 @@ npm run dev
 >
 > This will launch the React frontend with image analysis handled by the Hugging Face `blip-image-captioning-base` model.
 
+> 💡 If you do **not** wish to use Hugging Face and prefer running locally, simply:
+> - **Comment out** the Hugging Face block in `UploadForm.jsx`
+> - **Uncomment** the `/generate/` logic (already included & marked clearly)
+> - Then run the backend as below.
 
+---
 
 ### 2. 🧠 Local Flask Backend (Optional: Instead of Hugging Face)
 
@@ -91,6 +95,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
+---
 
 ### 3. 🐳 Docker Fullstack Build & Run
 
@@ -103,7 +108,6 @@ docker run -p 5000:5000 baby-monitor
 ```
 
 Then open [http://localhost:5000](http://localhost:5000) in your browser.
-
 ---
 
 ## 🔐 Authentication System
