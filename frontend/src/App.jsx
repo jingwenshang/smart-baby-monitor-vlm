@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const UploadForm = ({ triggerLogin }) => {
   const { token } = useContext(AuthContext);
