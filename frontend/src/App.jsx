@@ -28,7 +28,7 @@ const UploadForm = () => {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
           },
-          body: image,
+          body: formData,
         }
       );
 
