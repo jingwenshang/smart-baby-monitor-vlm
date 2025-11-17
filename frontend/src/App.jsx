@@ -27,6 +27,7 @@ const UploadForm = () => {
           method: "POST",
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_HF_TOKEN}`,
+            "Content-Type": image.type,
           },
           body: image,
         }
@@ -41,7 +42,10 @@ const UploadForm = () => {
       });
     } catch (err) {
       console.error("Upload failed:", err);
-      setResult({ description: "Error from Hugging Face", alert: false });
+      setResult({
+        description: "Error from Hugging Face",
+        alert: false,
+      });
     } finally {
       setLoading(false);
     }
