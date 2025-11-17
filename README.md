@@ -72,9 +72,32 @@ npm run dev
 cd backend
 pip install -r requirements.txt
 python app.py
+
+
+⚠ Make sure you’ve added your Hugging Face API token to a .env file:
+
+VITE_HF_TOKEN=hf_...
+
+
+This will launch the React frontend with image analysis handled by the Hugging Face blip-image-captioning-base model.
+
 ```
 
-### 2. 🐳 Docker Fullstack Build & Run
+### 2. 🧠 Local Flask Backend (instead of Hugging Face)
+
+If you prefer using your own Flask backend at /generate/ (e.g., to run offline or for full control), you can:
+
+Uncomment the /generate/ logic in UploadForm.jsx (clearly marked).
+
+Start the backend manually:
+
+cd backend
+pip install -r requirements.txt
+python app.py
+
+```
+
+### 3. 🐳 Docker Fullstack Build & Run
 
 ```bash
 docker build -t baby-monitor .
