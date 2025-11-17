@@ -116,12 +116,23 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## 📦 Deployment Options
 
-* **Option 1**: All-in-one Docker to [Render.com](https://render.com)
-* **Option 2**: Vercel (frontend) + Render (backend API)
-  
-💻 Frontend: Deployed on Vercel https://smart-baby-vlm-monitor.vercel.app/
+🚀 Option 1: Full Stack (Docker + Render)
 
-🧠 Backend/Model: Not deployed due to compute/memory limits on free Render plan. Model requires ~512Mi+ RAM for inference with blip-image-captioning-base.
+❌ Not used due to memory limits on free Render tier.
+
+The backend model (blip-image-captioning-base) requires more than 512MiB RAM for inference.
+
+Render’s free plan does not support this reliably.
+
+⚡ Option 2: Vercel (Frontend) + Hugging Face Inference API (Backend)
+
+✅ Frontend
+Hosted on Vercel:
+🔗 https://smart-baby-monitor-vlm.vercel.app
+
+✅ Backend (Model)
+Powered by Hugging Face’s hosted inference endpoint using blip-image-captioning-base
+Token managed securely via Vercel environment variables.
 
 ---
 
