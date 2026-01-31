@@ -3,6 +3,18 @@
 A full-stack AI-powered baby monitoring application that uses Visual Language Models (VLMs) to detect and describe baby activities such as crying, sleeping, and playing from images. Designed with a React frontend and a Flask backend, the app provides natural language summaries and optional alerts based on baby behavior.
 
 
+------
+
+## 👀 Demo
+
+
+
+
+https://github.com/user-attachments/assets/d95e7100-8b5c-46c7-bad2-c77a3afbd54e
+
+
+
+
 ---
 
 ## 🚀 Features
