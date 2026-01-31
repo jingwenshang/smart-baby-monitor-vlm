@@ -12,7 +12,10 @@ A full-stack AI-powered baby monitoring application that uses Visual Language Mo
 
 
 
-https://github.com/user-attachments/assets/26a32a73-9476-405d-87cf-df55cbb5b5d3
+
+
+https://github.com/user-attachments/assets/ef4e31bf-3231-43b6-8a7b-c2abd79e0306
+
 
 
 
